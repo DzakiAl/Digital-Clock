@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            background-color: #242424;
+            font-family: Helvetica;
+        }
+
+        #clock {
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-size: 15vw;
+            margin-top: 15.5vw;
+        }
+
+        @media (orientation: portrait) and (max-width: 480px) {
+            #clock {
+                margin-top: 80vw;
+            }
+        }
+
+        @media (orientation: portrait) and (max-width: 1024px) and (min-width: 480px) {
+            #clock {
+                margin-top: 60vw;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function() { clock(); }
+
+        function clock() {
+        var e = document.getElementById('clock'),
+        d = new Date(), h, m, s;
+        h = d.getHours();
+        m = set(d.getMinutes());
+        s = set(d.getSeconds());
+
+        e.innerHTML = h +':'+ m +':'+ s;
+
+        setTimeout('clock()', 1000);
+        }
+
+        function set(e) {
+        e = e < 10 ? '0'+ e : e;
+        return e;
+        }
+    </script>
+</head>
+<body>
+    <div id="clock"></div>
+</body>
+</html>
